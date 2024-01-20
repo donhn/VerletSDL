@@ -1,4 +1,5 @@
 # VerletSDL
+![Thumbnail](thumbnail.png)
 
 This is a simple physics engine written in SDL2 for practice.   
 It was made by closely following this video by johnBuffer:  
