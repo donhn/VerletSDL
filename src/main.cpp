@@ -86,7 +86,6 @@ int main(int argc, char *argv[]) {
     // Spawn objects
     if (obj_count < kMaxObjs && SDL_GetTicks64() > next_create) {
       obj_count++;
-      // Random radius between 5-10.
       double radius = kObjMinSize + (rand() % (kObjMaxSize - kObjMinSize));
       physics.CreatePhysicsObject(spawn_location, velocity_v, radius);
       velocity_v = velocity_rot * velocity_v;
@@ -116,7 +115,6 @@ int main(int argc, char *argv[]) {
                          kContainerRadius * 2, kContainerRadius * 2);
 
       // Draw physics objects.
-      engine.SetTextureColor("circle", 255, 255, 255);
       for (auto obj : physics.GetObjects()) {
         Vector2d render_position = obj.GetRenderPosition();
         engine.DrawTexture("circle", render_position[0], render_position[1],

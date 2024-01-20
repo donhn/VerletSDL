@@ -71,6 +71,7 @@ void SDL2Engine::DrawText(std::string name, SDL_Rect &rect) {
 
 void SDL2Engine::Render() {
   SDL_RenderPresent(renderer_);
+  // Clear screen with grey background.
   SDL_SetRenderDrawColor(renderer_, 200, 200, 200, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(renderer_);
 }
