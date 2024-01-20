@@ -7,6 +7,11 @@ It was made by closely following this video by johnBuffer:
 His repo can be found here: https://github.com/johnBuffer/VerletSFML
 
 # Build
+## Using Visual Studio
+1. Clone this repo.
+2. Open VarletSDL/ in Visual Studio and compile the Release version.
+
+
 ## Using MSVC
 ```
 git clone https://github.com/donhn/VerletSDL
