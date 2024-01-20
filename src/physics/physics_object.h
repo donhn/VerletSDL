@@ -27,11 +27,19 @@ class PhysicsObject {
   }
 
   void AddAcceleration(Vector2d acc) { acceleration += acc; }
-  Vector2d position_current;
-  Vector2d position_old;
-  Vector2d acceleration;
-  double radius;
-  double diameter;
+
+  std::string GetPropertiesString() {
+    return "Current Position: (" + std::to_string(position_current[0]) + ","
+              + std::to_string(position_current[1]) + ")\n"
+              + "Previous Position: (" + std::to_string(position_old[0]) + "," +
+           std::to_string(position_old[1]) + ")";
+  }
+
+  Vector2d position_current{0.0, 0.0};
+  Vector2d position_old{0.0, 0.0};
+  Vector2d acceleration{0.0, 0.0};
+  double radius{0};
+  double diameter{0};
   struct Color {
     int r;
     int g;
