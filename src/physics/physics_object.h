@@ -29,9 +29,9 @@ class PhysicsObject {
   void AddAcceleration(Vector2d acc) { acceleration += acc; }
 
   std::string GetPropertiesString() {
-    return "Current Position: (" + std::to_string(position_current[0]) + ","
-              + std::to_string(position_current[1]) + ")\n"
-              + "Previous Position: (" + std::to_string(position_old[0]) + "," +
+    return "Current Position: (" + std::to_string(position_current[0]) + "," +
+           std::to_string(position_current[1]) + ")\n" +
+           "Previous Position: (" + std::to_string(position_old[0]) + "," +
            std::to_string(position_old[1]) + ")";
   }
 
