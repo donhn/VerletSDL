@@ -4,7 +4,10 @@ project(verlet-sdl)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+if(NOT MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+endif()
 
 if(WIN32)
   list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty")
@@ -26,7 +29,6 @@ find_package(SDL2_ttf REQUIRED)
 # libraries.
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -37,6 +39,12 @@ target_include_directories(
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image
                       SDL2_ttf::SDL2_ttf)
 
+add_custom_command(
+  TARGET ${PROJECT_NAME}
+  POST_BUILD
+  COMMAND
+    ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/assets"
+    $<TARGET_FILE_DIR:${PROJECT_NAME}>"/assets")
 if(WIN32)
   add_custom_command(
     TARGET ${PROJECT_NAME}
