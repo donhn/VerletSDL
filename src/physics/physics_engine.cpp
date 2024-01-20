@@ -1,6 +1,5 @@
 #include "physics/physics_engine.h"
 
-#include <Eigen/src/Core/Matrix.h>
 #include <SDL_timer.h>
 
 PhysicsEngine::PhysicsEngine(int screen_w, int screen_h, int container_radius,
